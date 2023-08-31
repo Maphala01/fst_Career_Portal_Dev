@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+using System.Xml.Linq;
+
+namespace fst_Career_Portal_Dev.Models
+{
+    public class fst_portal_Login
+    {
+        [Display(Name = "ID")]
+        public int ID { get; set; }
+
+        [Display(Name = "Username")]
+        [Required(ErrorMessage = "Please enter Username")]
+        public string Username { get; set; }
+
+        [Display(Name = "RoleID")]
+        public int RoleID { get; set; }
+
+        [Display(Name = "UserRole")]
+        [Required(ErrorMessage = "Please select User Role")]
+        public string UserRole { get; set; }
+
+        [Required(ErrorMessage = "Please enter password")]
+        [DataType(DataType.Password)]
+        [StringLength(100, ErrorMessage = "Password \"{0}\" must have {2} character", MinimumLength = 8)]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,}$", ErrorMessage = "Password must contain: Minimum 8 characters atleast 1 UpperCase Alphabet, 1 LowerCase Alphabet, 1 Number and 1 Special Character")]
+        public string Password { get; set; }
+
+    }
+}

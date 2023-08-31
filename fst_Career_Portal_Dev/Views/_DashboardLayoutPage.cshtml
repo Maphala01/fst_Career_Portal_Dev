@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link href="~/Assets/images/coding.png" rel="icon" />
+    <link href="~/Assets/images/coding.png" rel="apple-touch-icon" />
+    <link href="~/Assets/css/bootstrap-icons.css" rel="stylesheet" />
+    @*<link href="~/Assets/css/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Assets/css/quill.snow.css" rel="stylesheet" />
+    <link href="~/Assets/css/quill.bubble.css" rel="stylesheet" />
+    <link href="~/Assets/css/remixicon.css" rel="stylesheet" />
+    <link href="~/Assets/css/simple-datatables.css" rel="stylesheet" />
+    <link href="~/Assets/css/style_Dashboard.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/Assets/js/apexcharts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    @*<script src="~/Assets/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/Assets/js/chart.min.js"></script>
+    <script src="~/Assets/js/echarts.min.js"></script>
+    <script src="~/Assets/js/quill.min.js"></script>
+    <script src="~/Assets/js/simple-datatables.js"></script>
+    <script src="~/Assets/js/tinymce.min.js"></script>
+    <script src="~/Assets/js/validate.js"></script>
+    <script src="~/Assets/js/main.js"></script>
+    <script src="~/Assets/js/fontawesome.min.js"></script>
+    <!-- Add jQuery (required for Toastr) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Add Toastr JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    @if (TempData["LoginSuccess"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.success('@TempData["LoginSuccess"]');
+        });
+        </script>
+    }
+
+    @if (TempData["LoginError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["LoginError"]');
+        });
+        </script>
+    }
+</body>
+</html>

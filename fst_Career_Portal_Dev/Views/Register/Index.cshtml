@@ -1,0 +1,201 @@
+﻿@model fst_Career_Portal_Dev.Models.RegisterMdl
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_RegisterLayoutPage1.cshtml";
+}
+
+@*@using (Html.BeginForm("Register", "Index", FormMethod.Post))  //Page + Controller*@
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h1 class="header-w3ls">
+        FASSET CAREER PORTAL<span class="trademark_1" style=" vertical-align: super;">&#174;</span>
+    </h1>
+    <div class="container">
+        <div class="art-bothside">
+
+            <div class="mid-cls">
+                <form action="#" method="post">
+                    <div class="art-right-w3ls">
+                        <h1 class="header-w3ls" id="register_header">Portal Registration</h1>
+                        @*<p>Facilitating the achievement of world-class finance and accounting services skills. </p>*@
+
+                        <div class="main" id="column">
+                            <div class="form-left-to-w3l">
+                                @*<input type="text" name="username" placeholder="Username" required="">*@
+                                @Html.TextBoxFor(e => e.Username, new { @class = "form-control custom-placeholder", placeholder = "Username *" })
+                                @if (TempData["UsernameError"] != null)
+                                {
+                                    <script>
+                                        $(document).ready(function () {
+                                            toastr.error('@TempData["UsernameError"]');
+                                        });
+                                    </script>
+                                }
+                            </div>
+                            <div class="main">
+                                <div class="form-left-to-w3l">
+                                    @*<input type="password" name="password" placeholder="Password" id="password" required="">*@
+                                    @Html.PasswordFor(e => e.Password, new { @class = "form-control custom-placeholder", placeholder = "Password *" })
+                                    @if (TempData["RegisterPasswordError"] != null)
+                                    {
+                                        <script>
+                                            $(document).ready(function () {
+                                                toastr.error('@TempData["RegisterPasswordError"]');
+                                            });
+                                        </script>
+                                    }
+                                    @*<div class="clear"></div>*@
+                                </div>
+                            </div>
+                            <div class="main">
+                                <div class="form-left-to-w3l">
+                                    @*<input type="password" name="password" placeholder="Password" id="password" required="">*@
+                                    @Html.PasswordFor(e => e.ConfirmPassword, new { @class = "form-control custom-placeholder", placeholder = "Confirm Password *" })
+                                    @if (TempData["RegisterPasswordConfirmError"] != null)
+                                    {
+                                        <script>
+                                            $(document).ready(function () {
+                                                toastr.error('@TempData["RegisterPasswordConfirmError"]');
+                                            });
+                                        </script>
+                                    }
+                                    @*<div class="clear"></div>*@
+                                </div>
+                            </div>
+                            <div class="form-left-to-w3l">
+                                @*<input type="text" name="userEmail" placeholder="Email Address" required="">*@
+                                @Html.TextBoxFor(e => e.Email, new { @class = "form-control custom-placeholder", placeholder = "Email *" })
+                                @if (TempData["EmailError"] != null)
+                                {
+                                    <script>
+                                        $(document).ready(function () {
+                                            toastr.error('@TempData["EmailError"]');
+                                        });
+                                    </script>
+                                }
+
+                            </div>
+                            <!--<div class="form-right-w3ls">-->
+
+                                @*@Html.DropDownListFor(model => model.register_roleList, new SelectList(Model.register_roleList, "Register_RoleID", "Register_RoleName"),"Select Role", new { @class = "form-control", @name = "RoleList" })*@
+                                @*@Html.DropDownListFor(model => model.register_roleList, new SelectList(Model.register_roleList, "Register_RoleID", "Register_RoleName"), "Select Role", new { @class = "form-control", @name = "RoleList" })*@
+                                @*Html.DropDownListFor(model => model.SelectedRoleId, new SelectList(Model.UserRoleList, "Register_RoleID", "Register_RoleName"), "Select Role", new { @class = "form-control custom-select-placeholder", @id = "roleDropdown" })
+
+                            </div>-->
+
+                        </div>
+
+
+                        <div class="btnn">
+                            <button type="submit" onclick="location.href='../Dashboard'">Back</button>
+                            @*<button name="button" value="Register" type="submit" onclick="location.href='@Url.Action("Index", "Register")'">Sign Up</button>*@
+                            <button type="submit" name="button" value="Register">Sign Up</button>
+                            @*<button type="submit" onclick="location.href='../Register/Login'">Sign Up</button>*@
+                        </div>
+
+                        @*<div class="banner-agileits-btm">
+                            <div class="w3layouts_more-buttn">
+                                <h3>Don’t have an account..? <a href="#small-dialog1 " class="play-icon popup-with-zoom-anim">Reset Password</a></h3>
+                            </div>
+                        </div>*@
+                    </div>
+                    <div class="art-left-w3ls">
+
+                        <div class="main" id="column2">
+                            <div class="form-left-to-w3l">
+                                @*<input type="text" name="username" placeholder="Username" required="">*@
+                                @Html.TextBoxFor(e => e.FirstName, new { @class = "form-control custom-placeholder", placeholder = "First Name *" })
+                                @if (TempData["RegisterFirstNameError"] != null)
+                                {
+                                    <script>
+                                        $(document).ready(function () {
+                                            toastr.error('@TempData["RegisterFirstNameError"]');
+                                        });
+                                    </script>
+                                }
+
+                            </div>
+                            <div class="main">
+                                <div class="form-left-to-w3l">
+                                    @*<input type="password" name="password" placeholder="Password" id="password" required="">*@
+                                    @Html.TextBoxFor(e => e.LastName, new { @class = "form-control custom-placeholder", placeholder = "Last Name *" })
+                                    @if (TempData["RegsiterLastNameError"] != null)
+                                    {
+                                        <script>
+                                            $(document).ready(function () {
+                                                toastr.error('@TempData["RegsiterLastNameError"]');
+                                            });
+                                        </script>
+                                    }
+
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="form-left-to-w3l">
+                                @*<input type="text" name="userEmail" placeholder="Email Address" required="">*@
+                                @Html.TextBoxFor(e => e.NationalID, new { @class = "form-control custom-placeholder", placeholder = "National ID *" })
+                                @if (TempData["RegisterNationalIDError"] != null)
+                                {
+                                    <script>
+                                        $(document).ready(function () {
+                                            toastr.error('@TempData["RegisterNationalIDError"]');
+                                        });
+                                    </script>
+                                }
+
+                            </div>
+                            <div class="main">
+                                <div class="form-left-to-w3l">
+                                    @Html.TextBoxFor(e => e.Grade, new { @class = "form-control custom-placeholder", placeholder = "Current Grade *" })
+                                    @if (TempData["RegisterGradeError"] != null)
+                                    {
+                                        <script>
+                                            $(document).ready(function () {
+                                                toastr.error('@TempData["RegisterGradeError"]');
+                                            });
+                                        </script>
+                                    }
+
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="form-left-to-w3l">
+                                @*<input type="text" name="userEmail" placeholder="Email Address" required="">*@
+                                @Html.TextBoxFor(e => e.School, new { @class = "form-control custom-placeholder", placeholder = "Current School *" })
+                                @if (TempData["RegisterSchoolError"] != null)
+                                {
+                                    <script>
+                                            $(document).ready(function () {
+                                                toastr.error('@TempData["RegisterSchoolError"]');
+                                            });
+                                    </script>
+                                }
+                            </div>
+                            <div class="form-left-to-w3l">
+                                @*<input type="text" name="userEmail" placeholder="Email Address" required="">*@
+                                @Html.TextBoxFor(e => e.Gender, new { @class = "form-control custom-placeholder", placeholder = "Gender *" })
+                                @if (TempData["RegisterGenderError"] != null)
+                                {
+                                    <script>
+                                            $(document).ready(function () {
+                                                toastr.error('@TempData["RegisterGenderError"]');
+                                            });
+                                    </script>
+                                }
+                            </div>
+                        </div>
+                        @*<img src="~/Assets/images/right1.jpg" />*@
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="copy">
+            <p>&copy;2022 FASSET Career Portal. All Rights Reserved | Design by <a href="http:fasset.org.za" target="_blank">FASSET</a></p>
+        </div>
+    </div>
+  }
+}
+

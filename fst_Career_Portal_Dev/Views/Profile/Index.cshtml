@@ -1,0 +1,572 @@
+﻿@model fst_Career_Portal_Dev.Models.UserProfileMdl
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_UserProfileLayoutPage.cshtml";
+}
+
+
+@Html.AntiForgeryToken()
+<h2>Index</h2>
+<header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between"> <a href="index.html" class="logo d-flex align-items-center"> <img src="~/Assets/images/coding.png" alt=""> <span class="d-none d-lg-block">CAREER PORTAL</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
+    <div class="search-bar">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword"> <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+    </div>
+    <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+            <li class="nav-item d-block d-lg-none"> <a class="nav-link nav-icon search-bar-toggle " href="#"> <i class="bi bi-search"></i> </a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown"> <i class="bi bi-bell"></i> <span class="badge bg-primary badge-number">4</span> </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                    <li class="dropdown-header"> You have 4 new notifications <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="notification-item">
+                        <i class="bi bi-exclamation-circle text-warning"></i>
+                        <div>
+                            <h4>Lorem Ipsum</h4>
+                            <p>Quae dolorem earum veritatis oditseno</p>
+                            <p>30 min. ago</p>
+                        </div>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="notification-item">
+                        <i class="bi bi-x-circle text-danger"></i>
+                        <div>
+                            <h4>Atque rerum nesciunt</h4>
+                            <p>Quae dolorem earum veritatis oditseno</p>
+                            <p>1 hr. ago</p>
+                        </div>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="notification-item">
+                        <i class="bi bi-check-circle text-success"></i>
+                        <div>
+                            <h4>Sit rerum fuga</h4>
+                            <p>Quae dolorem earum veritatis oditseno</p>
+                            <p>2 hrs. ago</p>
+                        </div>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="notification-item">
+                        <i class="bi bi-info-circle text-primary"></i>
+                        <div>
+                            <h4>Dicta reprehenderit</h4>
+                            <p>Quae dolorem earum veritatis oditseno</p>
+                            <p>4 hrs. ago</p>
+                        </div>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="dropdown-footer"> <a href="#">Show all notifications</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown"> <i class="bi bi-chat-left-text"></i> <span class="badge bg-success badge-number">3</span> </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                    <li class="dropdown-header"> You have 3 new messages <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="message-item">
+                        <a href="#">
+                            <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                            <div>
+                                <h4>Test User</h4>
+                                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                <p>4 hrs. ago</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="message-item">
+                        <a href="#">
+                            <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                            <div>
+                                <h4>Test User</h4>
+                                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                <p>6 hrs. ago</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="message-item">
+                        <a href="#">
+                            <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                            <div>
+                                <h4>Test User</h4>
+                                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                <p>8 hrs. ago</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="dropdown-footer"> <a href="#">Show all messages</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown pe-3">
+                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="~/Assets/images/user.png" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2">@Model.Fullname</span> </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <li class="dropdown-header">
+                        <h6>@Model.Fullname</h6>
+                        @*<span>Finance</span>*@
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li> <a class="dropdown-item d-flex align-items-center" href="users-profile.html"> <i class="bi bi-person"></i> <span>My Profile</span> </a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li> <a class="dropdown-item d-flex align-items-center" href="users-profile.html"> <i class="bi bi-gear"></i> <span>Account Settings</span> </a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li> <a class="dropdown-item d-flex align-items-center" href="pages-faq.html"> <i class="bi bi-question-circle"></i> <span>Need Help?</span> </a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li> <a class="dropdown-item d-flex align-items-center" href="@Url.Action("Logout", "Profile")"> <i class="bi bi-box-arrow-right"></i> <span>Sign Out</span> </a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item"> <a class="nav-link collapsed" href="index.html"> <i class="bi bi-grid"></i> <span>Dashboard | Learner</span> </a></li>
+
+        <li class="nav-item">
+            <!-- <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="users-profile.html"> <i class="bi bi-person"></i> <span>Profile</span> </a> -->
+            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="users-profile.html"> <i class="bi bi-person"></i><span>Learner</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+            <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                @*<li> <a href="@Url.Action("Index", "Profile")"><span>My Profile</span> </a></li>*@
+                <li> <a href="user-profile.html"><span>My Profile</span> </a></li>
+                <li> <a href="learner_my_documents.html"><span>My Documents</span> </a></li>
+                <li> <a href="learner_my_rinterest.html"><span>My Interests</span> </a></li>
+            </ul>
+        </li>
+        <li class="nav-item"> <a class="nav-link collapsed" href="#"> <i class="bi bi-card-list"></i> <span>Learner Opportunities</span> </a></li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-bar-chart"></i><span>Portal Documents</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li id="gradient_bullet"> <a href="#"><span>Manual</span> </a></li>
+                <li> <a href="#"><span>Popia Statement & Declaration</span> </a></li>
+                <li> <a href="#"><span>Learner Uploads</span> </a></li>
+            </ul>
+        </li>
+        <li class="nav-item"> <a class="nav-link collapsed" href="#"> <i class="bi bi-envelope"></i> <span>Contact</span> </a></li>
+        <li class="nav-item"> <a class="nav-link collapsed" href="#"> <i class="bi bi-question-circle"></i> <span>F.A.Q</span> </a></li>
+        <li class="nav-item"> <a class="nav-link collapsed" href="@Url.Action("Logout", "Profile")"> <i class="bi bi-box-arrow-left"></i> <span>Logout</span> </a></li>
+    </ul>
+</aside>
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Profile</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item">Users</li>
+                <li class="breadcrumb-item active">Profile</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section profile">
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="card">
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                        <img src="~/Assets/images/user.png" alt="Profile" class="rounded-circle">
+                        <h2>@Model.Fullname</h2>
+                        <h3>@Model.School</h3>
+                        <div class="social-links mt-2"> <a href="#" class="twitter"><i class="bi bi-twitter"></i></a> <a href="#" class="facebook"><i class="bi bi-facebook"></i></a> <a href="#" class="instagram"><i class="bi bi-instagram"></i></a> <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <div class="card">
+                    <div class="card-body pt-3">
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+                            <li class="nav-item"> <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button></li>
+                            <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button></li>
+                            <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button></li>
+                            <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-add-documents">Documents</button></li>
+                            <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-interests">Interest</button></li>
+
+                        </ul>
+                        <div class="tab-content pt-2">
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                <h5 class="card-title">About</h5>
+                                <p class="small fst-italic">@Model.About</p>
+                                <h5 class="card-title">Profile Details</h5>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                                    <div class="col-lg-9 col-md-8">@Model.Fullname</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">National ID</div>
+                                    <div class="col-lg-9 col-md-8">@Model.NationalID</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">School</div>
+                                    <div class="col-lg-9 col-md-8">@Model.School</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Grade</div>
+                                    <div class="col-lg-9 col-md-8">@Model.Grade</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Province</div>
+                                    <div class="col-lg-9 col-md-8">@Model.Province</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Address</div>
+                                    <div class="col-lg-9 col-md-8">@Model.Address1</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Phone</div>
+                                    <div class="col-lg-9 col-md-8">@Model.ContactNo</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Email</div>
+                                    <div class="col-lg-9 col-md-8">@Model.emailAddress</div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                                <form action="#" method="post">
+                                    @*<div class="row mb-3">
+                                        <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <img src="assets/img/profile-img.jpg" alt="Profile">
+                                            <div class="pt-2"> <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a> <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a></div>
+                                        </div>
+                                    </div>*@
+                                    <div class="row mb-3">
+                                        <label for="Fullname" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                                        <div class="col-md-8 col-lg-9">
+
+                                            @Html.TextBoxFor(e => e.Fullname, new { @class = "form-control" })
+                                            @if (TempData["EditFullnameError"] != null)
+                                            {
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        toastr.error('@TempData["EditFullnameError"]');
+                                                    });
+                                                </script>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="National ID" class="col-md-4 col-lg-3 col-form-label">National ID</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            @Html.TextBoxFor(e => e.NationalID, new { @class = "form-control" })
+                                            @if (TempData["EditNationalIDError"] != null)
+                                            {
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        toastr.error('@TempData["EditNationalIDError"]');
+                                                    });
+                                                </script>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="About" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                        @Html.TextAreaFor(e => e.About, new { @class = "form-control", style = "height: 100px", name = "About" })
+                                        @if (TempData["EditAboutError"] != null)
+                                        {
+                                            <script>
+                                                    $(document).ready(function () {
+                                                        toastr.error('@TempData["EditAboutError"]');
+                                                    });
+                                            </script>
+                                        }
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="School" class="col-md-4 col-lg-3 col-form-label">School</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            @Html.TextBoxFor(e => e.School, new { @class = "form-control", name = "School" })
+                                            @if (TempData["EditSchoolError"] != null)
+                                            {
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        toastr.error('@TempData["EditSchoolError"]');
+                                                    });
+                                                </script>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="Grade" class="col-md-4 col-lg-3 col-form-label">Grade</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            @Html.TextBoxFor(e => e.Grade, new { @class = "form-control", name = "Grade" })
+                                            @if (TempData["EditGradeError"] != null)
+                                            {
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        toastr.error('@TempData["EditGradeError"]');
+                                                    });
+                                                </script>
+                                            }
+                                        </div>
+                                    </div>
+                                    <!--<div class="row mb-3">
+                                    <label for="Province" class="col-md-4 col-lg-3 col-form-label">Province</label>
+                                    <div class="col-md-8 col-lg-9">-->
+                                    @*@Html.TextBoxFor(model => model.Province, new { @class = "form-control", @id = "province" })*@
+                                    @*<input name="Province" type="text" class="form-control" id="fullName" value="@Model.Province">*@
+                                    <!--@Html.TextBoxFor(e => e.Province, new { @class = "form-control", name = "Province" })
+                                    </div>
+                                    </div>-->
+                                    <div class="row mb-3">
+                                            <label for="Province" class="col-md-4 col-lg-3 col-form-label">Province</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                @Html.DropDownListFor(e => e.SelectedProvinceId, new SelectList(Model.ProvinceList, "Profile_ProvinceID", "Profile_ProvinceName"), "Select Province", new { @class = "form-control custom-select-placeholder", @id = "provinceDropdown" })
+
+                                            </div>
+                                        </div>
+                                    <div class="row mb-3">
+                                        <label for="Address1" class="col-md-4 col-lg-3 col-form-label">Address 1</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            @Html.TextBoxFor(e => e.Address1, new { @class = "form-control", id = "address1" })
+                                            @if (TempData["EditAddress1Error"] != null)
+                                            {
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        toastr.error('@TempData["EditAddress1Error"]');
+                                                    });
+                                                </script>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="Address2" class="col-md-4 col-lg-3 col-form-label">Address 2</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            @Html.TextBoxFor(e => e.Address2, new { @class = "form-control", id = "address2" })
+                                            @if (TempData["EditAddress2Error"] != null)
+                                            {
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        toastr.error('@TempData["EditAddress2Error"]');
+                                                    });
+                                                </script>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="Address3" class="col-md-4 col-lg-3 col-form-label">Post Code</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            @Html.TextBoxFor(model => model.Address3, new { @class = "form-control", id = "address3" })
+                                            @if (TempData["EditAddress3Error"] != null)
+                                            {
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        toastr.error('@TempData["EditAddress3Error"]');
+                                                    });
+                                                </script>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="ContactNo" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            @Html.TextBoxFor(model => model.ContactNo, new { @class = "form-control", id = "contactNo" })
+                                            @if (TempData["EditPhoneError"] != null)
+                                            {
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        toastr.error('@TempData["EditPhoneError"]');
+                                                    });
+                                                </script>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="emailAddress" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            @Html.TextBoxFor(model => model.emailAddress, new { @class = "form-control", id = "emailAddress" })
+                                            @if (TempData["EditEmailAddressError"] != null)
+                                            {
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        toastr.error('@TempData["EditEmailAddressError"]');
+                                                    });
+                                                </script>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        @*<button type="button" onclick="window.location.href='@Url.Action("SaveChanges", "Profile")'" class="btn btn-primary" value="updateProfile" name="submitButton">Save Changes</button>*@
+                                        <button type="submit" formaction="@Url.Action("SaveChanges", "Profile")" class="btn btn-primary" value="updateProfile" name="submitButton">Save Changes</button>
+
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane fade pt-3" id="profile-change-password">
+                                <form>
+                                    <div class="row mb-3">
+                                        <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                                        <div class="col-md-8 col-lg-9"> <input name="password" type="password" class="form-control" id="currentPassword"></div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                                        <div class="col-md-8 col-lg-9"> <input name="newpassword" type="password" class="form-control" id="newPassword"></div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                                        <div class="col-md-8 col-lg-9"> <input name="renewpassword" type="password" class="form-control" id="renewPassword"></div>
+                                    </div>
+                                    <div class="text-center"> <button type="submit" class="btn btn-primary" value="changePassword" name="submitButton">Change Password</button></div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade pt-3" id="profile-add-documents">
+                                <div class="row mb-3">
+                                    <div class="row">
+                                        @*<div class="col-md-8 col-lg-9">
+                                                <label for="fileUpload" class="form-label">File Type</label>
+                                                @Html.DropDownListFor(e => e.SelectedDocsId, new SelectList(Model.DocumentList, "Profile_DocumentID", "Profile_DocumentName"), "Select Document", new { @class = "form-control custom-select-placeholder", @id = "documentDropdown" })
+
+                                            </div>*@
+                                    </div>
+                                    <form action="@Url.Action("UploadDocuments", "Profile")" method="post" enctype="multipart/form-data">
+                                        <div class="col-md-8 col-lg-9">
+                                            <label for="fileUpload" class="form-label">File Type</label>
+                                            @if (Model.DocumentList != null && Model.DocumentList.Count > 0)
+                                            {
+                                                @Html.DropDownListFor(
+                                                    e => e.SelectedDocsId,
+                                                    new SelectList(Model.DocumentList, "Profile_DocumentID", "Profile_DocumentName"),
+                                                    "Select Document",
+                                                    new { @class = "form-control custom-select-placeholder", @id = "documentDropdown" }
+                                                )
+                                            }
+                                            else
+                                            {
+                                                @Html.DropDownListFor(
+                                                    e => e.SelectedDocsId,
+                                                    Enumerable.Empty<SelectListItem>(),  // Use an empty SelectList to show default text
+                                                    "Select Document",
+                                                    new { @class = "form-control custom-select-placeholder", @id = "documentDropdown" }
+                                                )
+                                            }
+
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="fileUpload" class="form-label">Upload Documents</label>
+                                            <input type="file" class="form-control" name="fileUpload" multiple>
+                                        </div>
+                                        @Html.HiddenFor(e => e.SelectedDocsId)
+                                        <button type="submit" class="btn btn-primary">Upload</button>
+                                    </form>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>Uploaded Documents</h4>
+                                            @if (Model.UserDocuments != null && Model.UserDocuments.Any())
+                                            {
+                                                <ul>
+                                                    @foreach (var document in Model.UserDocuments)
+                                                    {
+                                                        @*<li><span>FILE TYPE:</span>@document.FileType</li>*@
+                                                        <li><b>@document.FileTypeName</b><span>  : </span>@document.FileName</li>
+                                                    }
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                                <p>No documents uploaded...</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade pt-3" id="profile-interests">
+                                <div class="row mb-3">
+                                    <div class="row">
+                                        <div class="card-body">
+                                            @*<form method="post" action="@Url.Action("SaveSelectedOpportunities", "YourControllerName")">*@
+
+                                                <table class="table table-borderless datatable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="no-sort">#</th>
+                                                            @*<th scope="col">Posted</th>*@
+                                                            @*<th scope="col">Province</th>*@
+                                                            <th scope="col">Description</th>
+                                                            @*<th scope="col">Type</th>*@
+                                                            <th scope="col">Status</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var Opportunities in Model.Opportunities)
+                                                        {
+                                                            <tr>
+                                                                <td><input type="checkbox" name="selectedOpportunities"></td>
+
+                                                                @*<th scope="row"><a href="#">@Opportunities.PostedDate.ToString("yyyy-MM-dd")</a></th>*@
+                                                                @*<td>@Opportunities.Province</td>*@
+                                                                <td><a href="#" class="text-primary">@Opportunities.Description</a></td>
+                                                                @*<td>@Opportunities.Type</td>*@
+                                                                <td>
+                                                                    @if (Opportunities.Status == "Open")
+                                                                    {
+                                                                        <span class="badge bg-success">@Opportunities.Status</span>
+                                                                    }
+                                                                    else if (Opportunities.Status == "Closed")
+                                                                    {
+                                                                        <span class="badge bg-danger">@Opportunities.Status</span>
+                                                                    }
+                                                                    else if (Opportunities.Status == "Closing Soon")
+                                                                    {
+                                                                        <span class="badge bg-warning">@Opportunities.Status</span>
+                                                                    }
+                                                                </td>
+                                                                @*<td>
+                                <a href="@Url.Action("OpportunityModal", "YourControllerName", new { id = @Opportunities.Id })" class="btn btn-link" data-toggle="modal" data-target="#modalOpportunity_@Opportunities.Id" data-description="@Opportunities.Description">View</a>
+                            </td>*@
+
+                                                            </tr>
+                                                        }
+                                                    </tbody>                                                   
+                                                </table>
+                                                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<footer id="footer" class="footer">
+    <div class="copyright"> &copy; Copyright <strong><span>FASSET</span></strong>. All Rights Reserved</div>
+</footer>
+
+
+
+
+
+
+
+
+

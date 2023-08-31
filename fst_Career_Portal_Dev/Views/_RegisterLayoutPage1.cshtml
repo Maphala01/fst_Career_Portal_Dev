@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Assets/css/popuo-box.css" rel="stylesheet" />
+    <link href="~/Assets/css/style_Registration.css" rel="stylesheet" />
+
+    <!-- CSS for Toastr -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    @*<script src="~/Assets/js/jquery-2.2.3.min.js"></script>*@
+    <script src="~/Assets/js/jquery.magnific-popup.js"></script>
+
+    <!-- Add jQuery (required for Toastr) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Add Toastr JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    @if (TempData["RegisterUsernameError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["RegisterUsernameError"]');
+        });
+        </script>
+    }
+    @if (TempData["RegisterPasswordError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["RegisterPasswordError"]');
+        });
+        </script>
+    }
+    @if (TempData["RegisterPasswordConfirmError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["RegisterPasswordConfirmError"]');
+        });
+        </script>
+    }
+    @if (TempData["RegisterEmailError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["RegisterEmailError"]');
+        });
+        </script>
+    }
+    @if (TempData["RegisterFirstNameError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["RegisterFirstNameError"]');
+        });
+        </script>
+    }
+    @if (TempData["RegsiterLastNameError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["RegsiterLastNameError"]');
+        });
+        </script>
+    }
+    @if (TempData["RegisterNationalIDError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["RegisterNationalIDError"]');
+        });
+        </script>
+    }
+    @if (TempData["RegisterGradeError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["RegisterGradeError"]');
+        });
+        </script>
+    }
+    @if (TempData["RegisterSchoolError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["RegisterSchoolError"]');
+        });
+        </script>
+    }
+    @if (TempData["RegisterGenderError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["RegisterGenderError"]');
+        });
+        </script>
+    }
+  
+</body>
+</html>
