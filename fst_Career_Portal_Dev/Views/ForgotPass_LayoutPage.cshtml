@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Assets/css/popuo-box.css" rel="stylesheet" />
+    <link href="~/Assets/css/style.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/Assets/js/jquery-2.2.3.min.js"></script>
+    <script src="~/Assets/js/jquery.magnific-popup.js"></script>
+
+    <!-- Add jQuery (required for Toastr) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Add Toastr JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    @if (TempData["PasswordChangeSuccess"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.success('@TempData["PasswordChangeSuccess"]');
+        });
+        </script>
+    }
+    @if (TempData["PasswordChangeError3"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["PasswordChangeError3"]');
+        });
+        </script>
+    }
+    @if (TempData["PasswordChangeError2"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["PasswordChangeError2"]');
+        });
+        </script>
+    }
+
+    @if (TempData["PasswordChangeError1"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["PasswordChangeError1"]');
+        });
+        </script>
+    }
+    @if (TempData["PasswordChangeError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["PasswordChangeError"]');
+        });
+        </script>
+    }
+</body>
+
+

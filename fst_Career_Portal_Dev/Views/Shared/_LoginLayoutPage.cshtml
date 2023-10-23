@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <!--bootstrap.css-->
+    <link href="https://drive.google.com/uc?id=1uLOjTjAyceTvkgvS1WS3vRRHRbTeOMwu" rel="stylesheet" />
+    <!--popuo.css-->
+    <link href="https://drive.google.com/uc?id=1FBS6Ti8kjOoQTs5ozLzRdmu9fJw7iVfo" rel="stylesheet" />
+    <!--style.css-->
+    <link href="https://drive.google.com/uc?id=1VjxS8KNwTtXRi765Kzc-g5U1Ljk1qOac" rel="stylesheet" />
+    <!--toast.css-->
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- Add jQuery (required for Toastr) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--magnific-popup.js-->
+    <script src="https://drive.google.com/uc?id=1gK9mbefdtK4jL0hG9asENlpkMSnbHLU0"></script>
+    <!--jquery-2.2.3.min.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <!-- Add Toastr JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    @if (TempData["LoginSuccess"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.success('@TempData["LoginSuccess"]');
+        });
+        </script>
+    }
+    @if (TempData["LoginSuccess"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.success('@TempData["LoginSuccess"]');
+        });
+        </script>
+    }
+
+    @if (TempData["LoginError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["LoginError"]');
+        });
+        </script>
+    }
+    @if (TempData["LoginUsernameError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["LoginUsernameError"]');
+        });
+        </script>
+    }
+    @if (TempData["LoginPasswordError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["LoginPasswordError"]');
+        });
+        </script>
+    }
+    @if (TempData["ToastMessageSuccess"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.success('@TempData["ToastMessageSuccess"]');
+        });
+        </script>
+    }
+</body>
+</html>

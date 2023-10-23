@@ -110,7 +110,7 @@ namespace fst_Career_Portal_Dev.Controllers
                 // Other validation logic
                 return View(model); // Return back to the view
             }
-            if (string.IsNullOrEmpty(model.Grade))
+            if (string.IsNullOrEmpty(model.SelectedGrade))
             {
                 TempData["RegisterGradeError"] = "Grade is required.";
                 // Other validation logic
@@ -122,7 +122,7 @@ namespace fst_Career_Portal_Dev.Controllers
                 // Other validation logic
                 return View(model); // Return back to the view
             }
-            if (string.IsNullOrEmpty(model.Gender))
+            if (string.IsNullOrEmpty(model.SelectedGender))
             {
                 TempData["RegisterGenderError"] = "Gender is required.";
                 // Other validation logic
@@ -130,13 +130,18 @@ namespace fst_Career_Portal_Dev.Controllers
             }
             int selectedRoleId = model.SelectedRoleId;
 
+            string selectedG = model.SelectedGender;
+
+            string selectedGrade = model.SelectedGrade;
+
             int res = dbaLayer.User_Registration(fc["username"], fc["password"], selectedRoleId, fc["FirstName"], fc["LastName"],
-                                                  fc["Email"], fc["Grade"],fc["Gender"], fc["School"], fc["Province"], fc["NationalID"]);
+                                                  fc["Email"], selectedGrade, selectedG, fc["School"], fc["Province"], fc["NationalID"]);
             LoginMdl lrf = new LoginMdl();
             RegisterMdl user_role_ = new RegisterMdl();
             //user_role_.UserRoleList = GetDropdownOptionsFromDatabase();
             if (res == 88)
             {
+                TempData["ToastMessageSuccess"] = "Successful...Your registration has been successful.";
                 user_role_.UserRoleList = GetDropdownOptionsFromDatabase();
                 ViewBag.Message = string.Format("Hello {0}.\\nCurrent Date and Time: {1}", fc["FirstName"], DateTime.Now.ToString());
                 return RedirectToAction("Index", "Login");
@@ -149,17 +154,17 @@ namespace fst_Career_Portal_Dev.Controllers
             {
                 TempData["ToastMessage"] = "Error...User input ID already exists.";
             }
-            else if (res == 4)
+            else if (res == 4 ) 
             {
-                TempData["ToastMessage"] = "Error...Something has gone wrong...notify the adminstrator.";
+                TempData["ToastMessage"] = "Error...Registration has gone wrong,notify the adminstrator.";
             }
             else if (res == 5)
             {
-                TempData["ToastMessage"] = "Error...Something has gone wrong...notify the adminstrator.";
+                TempData["ToastMessage"] = "Error...Registration has gone wrong,notify the adminstrator.";
             }
             else if (res == 6)
             {
-                TempData["ToastMessage"] = "Error...User ID input is incorrect)";
+                TempData["ToastMessage"] = "Error..ID citizenship is not zero (non-South Africa)";
             }
             else if (res == 7)
             {
@@ -167,7 +172,7 @@ namespace fst_Career_Portal_Dev.Controllers
             }
             else if (res == 8)
             {
-                TempData["ToastMessage"] = "Error...Something has gone wrong...notify the adminstrator.";
+                TempData["ToastMessage"] = "Error...Input ID is wrong.";
             }
             return View(user_role_);
         }

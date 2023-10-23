@@ -23,8 +23,8 @@ namespace fst_Career_Portal_Dev.Controllers
         string WhoLogged_user = dba.WhoLogged_usrnm;
         string WhoLogged_pss = dba.WhoLogged_pwd;
         Data_Access_Layer.dba dbaLayer = new Data_Access_Layer.dba();
-        int flag = 0;
-        UserProfileMdl learner_opp_;
+        //int flag = 0;
+        //UserProfileMdl learner_opp_;
         // GET: Profile
         public ActionResult Index(UserProfileMdl model)
         {
@@ -33,13 +33,14 @@ namespace fst_Career_Portal_Dev.Controllers
 
             UserProfileMdl Profiledata_ = new UserProfileMdl();
             string userName = WhoLogged_user;
+            DeleteItem(userName);
 
             if (!string.IsNullOrEmpty(userName))
             {
                 Profiledata_ = GetDataFromDatabase(userName);
                 Profiledata_.ProvinceList = GetDropdownOptionsFromDatabase_Province();
                 Profiledata_.DocumentList = GetDropdownOptionsFromDatabase_DocType(WhoLogged_user);
-
+                Profiledata_.RecentInterestList = GetLearnerInterest(WhoLogged_user);
                 // Only fetch UserDocuments if userData has been successfully populated
                 if (Profiledata_ != null)
                 {
@@ -48,7 +49,7 @@ namespace fst_Career_Portal_Dev.Controllers
                     UserProfileMdl viewModels = new UserProfileMdl
                     {
                         Opportunities = LearnerOpportunities(),
-                        RecentApplication = GetLearnerApplication(WhoLogged_user)
+                        //RecentApplication = GetLearnerApplication(WhoLogged_user)
                     };
 
                     // Update the properties of Profiledata_ with values from viewModels
@@ -59,33 +60,101 @@ namespace fst_Career_Portal_Dev.Controllers
 
             return View(Profiledata_);
         }
+        public ActionResult ChangePassword(UserProfileMdl model)
+        {
+            try
+            {
+                string userName = WhoLogged_user;
+                string password = model.NewPasswordChange;
 
+                var connection = ConfigurationManager.ConnectionStrings["db_connection"].ToString();
+                SqlConnection sql_conn = new SqlConnection(connection);
 
-        private List<UserProfileMdl> GetLearnerApplication(string UserName)
+                SqlCommand sql_cmd = new SqlCommand("cpMst_ForgotUserPassword", sql_conn);
+                sql_cmd.CommandType = CommandType.StoredProcedure;
+
+                sql_cmd.Parameters.AddWithValue("@cp_usrNm", userName);
+                sql_cmd.Parameters.AddWithValue("@cpUsrPsswrd", password);
+
+                sql_conn.Open();
+                sql_cmd.ExecuteNonQuery();
+
+                TempData["PasswordChangeSuccess"] = "Password Changed...was successful";
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception )
+            {
+                TempData["PasswordChangeError"] = "Password Changed error..please try again";
+                return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult DeleteItem(string user)
+        {
+            int id;
+            if (int.TryParse(Request.Form["OpportunityId"], out id))
+            {
+                // Assuming you have a connection string in your configuration
+                string connectionString = ConfigurationManager.ConnectionStrings["db_connection"].ConnectionString;
+
+                // Create a connection to the database
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Define your SQL command to delete the record
+                    string sql = "DELETE FROM mst_cpUserInterest WHERE cp_usrInterestId = @OpportunityId";
+
+                    // Create the SQL command with parameters
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        // Add the OpportunityId parameter
+                        command.Parameters.AddWithValue("@OpportunityId", id);
+
+                        // Open the database connection
+                        connection.Open();
+
+                        // Execute the SQL command to delete the record
+                        command.ExecuteNonQuery();
+                    }
+                }
+                TempData["InterestDeletionSuccess"] = "Interest deletion...was successful";
+            }
+            //else
+            //{
+            //    TempData["InterestDeletionError"] = "Interest deletion...contact administrator";
+            //}
+
+            return RedirectToAction("Index");
+        }
+
+        private List<UserProfileMdl> GetLearnerInterest(string UserName)
         {
             DataSet ds = new DataSet();
             var connection = ConfigurationManager.ConnectionStrings["db_connection"].ToString();
             SqlConnection sql_conn = new SqlConnection(connection);
 
-            SqlCommand sql_cmd = new SqlCommand("cpMst_GetUserApplication", sql_conn);
+            SqlCommand sql_cmd = new SqlCommand("cpMst_spGetUserInterests", sql_conn);
             sql_cmd.CommandType = CommandType.StoredProcedure;
-            sql_cmd.Parameters.AddWithValue("@UserName", UserName);
-            //sql_cmd.Parameters.AddWithValue("@UserPassword", Userpassword);
+            sql_cmd.Parameters.AddWithValue("@cpUsrNm", UserName);
+
             sql_conn.Open();
 
             SqlDataAdapter da = new SqlDataAdapter(sql_cmd);
             da.Fill(ds);
 
             List<UserProfileMdl> userApp_ = new List<UserProfileMdl>();
+            //int OppID = 1;
             foreach (DataRow row in ds.Tables[0].Rows)
             {
                 UserProfileMdl uobj = new UserProfileMdl();
-
+                string Description = row["cp_Description"].ToString();
+                int OpportunityID = Convert.ToInt32(row["cp_usrInterestId"]);
                 // Assuming your DashboardMdl properties have the same names as columns in the database
+                uobj.ApplicationDesc = Description;
                 uobj.ApplicationAppliedDate = Convert.ToDateTime(row["cp_DateApplied"]);
-                uobj.ApplicationStatus = row["cp_ApplicationStatus"].ToString();
-                uobj.ApplicationDesc = row["cp_Description"].ToString();
-                uobj.ApplicationType = row["cp_Type"].ToString();
+                //uobj.ApplicationDesc = row["cp_Description"].ToString();
+                //uobj.ApplicationType = row["cp_Type"].ToString();
+                uobj.OpportunityId = OpportunityID;
 
                 userApp_.Add(uobj);
             }
@@ -147,13 +216,15 @@ namespace fst_Career_Portal_Dev.Controllers
                             string fileType = Convert.ToString(idr["fileType"]);
                             string fileExtension = Path.GetExtension(fileType);
                             string fileTypeName = Convert.ToString(idr["fileTypeName"]);
+                            int documentId = Convert.ToInt32(idr["cp_documentId"]);
                             documents_list.Add(new UserProfileMdl
                             {
                                 FileName = Convert.ToString(idr["docFileName"]),
                                 FileType = Convert.ToString(idr["fileType"]),
                                 FileContent = (byte[])idr["fileContent"],
                                 FileExtension = fileExtension,
-                                FileTypeName = fileTypeName
+                                FileTypeName = fileTypeName,
+                                DocumentId = documentId
                             });
                         }
                     }
@@ -162,6 +233,51 @@ namespace fst_Career_Portal_Dev.Controllers
                 }
             }
         }
+
+        public ActionResult DeleteDocument(int documentId)
+        {
+            try
+            {
+                int DocID = documentId;
+                string connectionString = ConfigurationManager.ConnectionStrings["db_connection"].ConnectionString;
+
+                // Create a connection to the database
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // Define your SQL command to delete the record
+                    string sql = "DELETE FROM mst_cpusrDocs WHERE cp_documentId = @documentId";
+
+                    // Create the SQL command with parameters
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        // Add the OpportunityId parameter
+                        command.Parameters.AddWithValue("@documentId", documentId);
+
+                        // Open the database connection
+                        connection.Open();
+
+                        // Execute the SQL command to delete the record
+                        command.ExecuteNonQuery();
+                    }
+                }
+                TempData["DocDeleteSuccess"] = "Document Delete...was successful";
+            //else
+            //{
+            //    TempData["InterestDeletionError"] = "Interest deletion...contact administrator";
+            //}
+
+            return RedirectToAction("Index");
+
+            }
+                catch (Exception ex)
+                {
+                    // Handle any exceptions that occur during the deletion process.
+                    TempData["DocDeleteError"] = "An error occurred while deleting the document: " + ex.Message;
+
+                // You can choose to redirect the user to an error page or another appropriate action.
+                return RedirectToAction("Index"); // Replace "Error" with the actual action name.
+            }
+            }
 
 
 
@@ -222,19 +338,21 @@ namespace fst_Career_Portal_Dev.Controllers
                 SqlDataReader idr = sql_cmd.ExecuteReader();
                 if (idr.HasRows)
 
+
                 {
                     while (idr.Read())
                     {
                         //int fullNameIndex = idr.GetOrdinal("FullName");
-
+                        string Province = Convert.ToString(idr["cp_provinceName"]);
                         //userData.Fullname = idr.GetString(fullNameIndex);
                         int fullNameIndex = 1;
                         userData.About = idr["cp_usrAbout"].ToString();
                         userData.Fullname = idr[fullNameIndex].ToString();
                         userData.School = idr["cp_usrCrrntSchl"].ToString();
-                        userData.Grade = Convert.ToInt32(idr["cp_usrCrrntGrd"]);
+                        //userData.Grade = Convert.ToInt32(idr["cp_usrCrrntGrd"]);
+                        userData.Grade = idr["cp_usrCrrntGrd"].ToString();
                         userData.NationalID = idr["cp_usrIdNo"].ToString();
-                        //userData.Province = idr["cp_usrPrvnc"].ToString();
+                        userData.Province = Province;
                         //userData.Profile_ProvinceID = (int)idr["Profile_ProvinceID"];
                         userData.Address1 = idr["cp_usrAddrss1"].ToString();
                         userData.Address2 = idr["cp_usrAddrss2"].ToString();
@@ -288,18 +406,15 @@ namespace fst_Career_Portal_Dev.Controllers
         //public ActionResult SaveChanges(FormCollection fc, UserProfileMdl model)
         public ActionResult SaveChanges(UserProfileMdl e, string submitButton)
         {
+            UserProfileMdl Profiledata_ = new UserProfileMdl();
+            //int flag = 0;
             if (string.IsNullOrEmpty(e.Fullname))
             {
                 TempData["EditFullnameError"] = "Full Name is required.";
                 // Other validation logic 9169315254
                 return View("Index"); // Return back to the view
             }
-            if (string.IsNullOrEmpty(e.NationalID))
-            {
-                TempData["EditNationalIDError"] = "National ID is required.";
-                // Other validation logic 9169315254
-                return View("Index"); // Return back to the view
-            }
+            
             if (string.IsNullOrEmpty(e.About))
             {
                 TempData["EditAboutError"] = "About is required.";
@@ -312,8 +427,11 @@ namespace fst_Career_Portal_Dev.Controllers
                 // Other validation logic 9169315254
                 return View("Index"); // Return back to the view
             }
-            if (e.Grade.ToString().Length == 0 || e.Grade == 0)
+            //if (e.Grade.ToString().Length == 0 || e.Grade == 0)
+            if (string.IsNullOrEmpty(e.Grade) || (int.TryParse(e.Grade, out int gradeValue) && gradeValue == 0))
+
             {
+                Profiledata_ = GetDataFromDatabase(WhoLogged_user);
                 TempData["EditGradeError"] = "Current Grade is required/Grade can't be zero.";
                 // Other validation logic 9169315254
                 return View("Index"); // Return back to the view
@@ -351,7 +469,15 @@ namespace fst_Career_Portal_Dev.Controllers
 
             UserProfileMdl userData = new UserProfileMdl();
             int SelectedProvinceId = e.SelectedProvinceId;
-                        if (submitButton == "updateProfile")
+            if (string.IsNullOrEmpty(e.NationalID))
+            {
+
+                TempData["EditNationalIDError"] = "National ID is required.";
+                
+                return View("Index"); // Return back to the view
+
+            }
+            else if (submitButton == "updateProfile")
             {
                 int res = dbaLayer.SaveUserChanges(e, WhoLogged_user, SelectedProvinceId);
                 
@@ -359,9 +485,11 @@ namespace fst_Career_Portal_Dev.Controllers
                 userData.DocumentList = GetDropdownOptionsFromDatabase_DocType(WhoLogged_user);
                 if (res != -1)
                 {
+                    userData.ProvinceList = GetDropdownOptionsFromDatabase_Province();
                     userData.DocumentList = GetDropdownOptionsFromDatabase_DocType(WhoLogged_user);
                     userData.UserDocuments = GetDocsFromDatabase(WhoLogged_user);
                     userData.Opportunities = LearnerOpportunities();
+                    userData.RecentInterestList = GetLearnerInterest(WhoLogged_user);
                     TempData["ProfileUpdated"] = "Profile updated successfully!";
 
                     return View("Index", userData);
@@ -438,34 +566,63 @@ namespace fst_Career_Portal_Dev.Controllers
             return RedirectToAction("Index", "Login");
         }
 
-        //public ActionResult Interests()
+        public ActionResult SubmitInterests(List<int> selectedOpportunities)
+        {
+            if (selectedOpportunities != null && selectedOpportunities.Count <= 5)
+            {
+                foreach (var opportunityId in selectedOpportunities)
+                {
+                    // Save the selected opportunity to the database
+                    // Example:
+                    // dbaLayer.SaveSelectedOpportunity(opportunityId);
+                }
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "You can only select up to 5 opportunities.";
+                return RedirectToAction("Index");
+            }
+        }
+
+        //private List<UserProfileMdl> GetLearnerApplication(string UserName)
         //{
-        //    var userInterests = GetUserInterests(); // Replace with your logic
-        //    var savedInterests = GetSavedInterests(); // Replace with your logic
+        //    DataSet ds = new DataSet();
+        //    var connection = ConfigurationManager.ConnectionStrings["db_connection"].ToString();
+        //    SqlConnection sql_conn = new SqlConnection(connection);
 
+        //    SqlCommand sql_cmd = new SqlCommand("cpMst_GetUserApplication", sql_conn);
+        //    sql_cmd.CommandType = CommandType.StoredProcedure;
+        //    sql_cmd.Parameters.AddWithValue("@UserName", UserName);
+        //    //sql_cmd.Parameters.AddWithValue("@UserPassword", Userpassword);
+        //    sql_conn.Open();
 
+        //    SqlDataAdapter da = new SqlDataAdapter(sql_cmd);
+        //    da.Fill(ds);
 
-        //    ViewBag.UserInterests = userInterests;
-        //    ViewBag.SavedInterests = savedInterests;
+        //    List<DashboardMdl> userApp_ = new List<DashboardMdl>();
+        //    foreach (DataRow row in ds.Tables[0].Rows)
+        //    {
+        //        DashboardMdl uobj = new DashboardMdl();
 
-        //    return View();
+        //        // Assuming your DashboardMdl properties have the same names as columns in the database
+        //        uobj.ApplicationAppliedDate = Convert.ToDateTime(row["cp_DateApplied"]);
+        //        uobj.ApplicationStatus = row["cp_ApplicationStatus"].ToString();
+        //        uobj.ApplicationDesc = row["cp_Description"].ToString();
+        //        uobj.ApplicationType = row["cp_Type"].ToString();
+
+        //        userApp_.Add(uobj);
+        //    }
+
+        //    sql_conn.Close();
+        //    return userApp_;
         //}
 
-        //[HttpPost]
-        //public ActionResult MarkInterestAsInterested(int interestId)
-        //{
-        //    // Mark interest as interested and update data
-        //    // Redirect back to interests page
-        //}
 
-        //[HttpPost]
-        //public ActionResult RemoveSavedInterest(int interestId)
-        //{
-        //    // Remove saved interest and update data
-        //    // Redirect back to interests page
-        //}
 
-        // Other actions...
+
+
+
     }
 }
 

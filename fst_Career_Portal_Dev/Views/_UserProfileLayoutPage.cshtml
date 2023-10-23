@@ -157,5 +157,55 @@
         });
         </script>
     }
+    @if (TempData["InterestDeletionError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["InterestDeletionError"]');
+        });
+        </script>
+    }
+    @if (TempData["InterestDeletionSuccess"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                toastr.success('@TempData["InterestDeletionSuccess"]');
+        });
+        </script>
+    }
+    @if (TempData["DocDeleteError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["DocDeleteError"]');
+        });
+        </script>
+    }
+    @if (TempData["DocDeleteSuccess"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.success('@TempData["OpportunitySuccess"]');
+        });
+        </script>
+    }
+
+    @if (TempData["PasswordChangeSuccess"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.success('@TempData["PasswordChangeSuccess"]');
+        });
+        </script>
+    }
+
+    @if (TempData["PasswordChangeError"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.success('@TempData["PasswordChangeError"]');
+        });
+        </script>
+    }
 </body>
 </html>

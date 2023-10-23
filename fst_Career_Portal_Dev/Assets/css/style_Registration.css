@@ -256,6 +256,12 @@ ul {
     margin: 0;
     padding: 0;
 }
+
+.image-reg {
+    height: auto;
+    width: 25% !important;
+    margin:14% 0% 0% 60%
+}
 /*-- //Reset-Code --*/
 body {
     background: #000;
@@ -316,13 +322,15 @@ h1.header-w3ls {
     display: flex;
     -webkit-justify-content: space-between;
     justify-content: space-between;
-    background-image: url(../images/right1.jpg);
+   /* background-image: url('../images/fasset_logo_1-removebg-preview (1).png');*/
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: bottom;
+    background-position: center;
+
+   
 }
 #column2 {
-    margin-top:126px;
+    margin-top: -20px;
 }
 
 .custom-placeholder::placeholder {
@@ -350,6 +358,7 @@ h1.header-w3ls {
 .art-left-w3ls {
     text-align: center;
     /*background: #ffffff;*/
+    margin-top:-88px;
 }
 
 .form-left-to-w3l input[type="text"], .form-left-to-w3l input[type="password"], .form-right-w3ls input[type="password"], .form-right-w3ls input[type="email"], .form-right-w3ls select {

@@ -25,16 +25,131 @@
 	font-family: "Nunito", sans-serif;
   }
 
-	  
-  
-  /*--------------------------------------------------------------
+	#SubmitInterest2 {
+	margin-top:50px !important; 
+}
+
+.card-fixed-height {
+	height: 200px; /* Adjust the height as needed */
+}
+
+/*-------------------------------------Personal_Info-------------------------------------------------------/
+
+/* Neon border for 0-24% */
+.neon-border-0-24 {
+	border: 2px solid transparent !important; /* Neon RED border color */
+	box-shadow: 0 0 10px #FF3131, 0 0 10px #FF3131, 0 0 10px #FF3131 !important; /* Neon green box shadow */
+}
+
+/* Neon border for 25-49% */
+.neon-border-25-49 {
+	border: 2px solid #00FF00 !important; /* Neon ORANGE border color */
+	box-shadow: 0 0 10px #FFBF00, 0 0 10px #FFBF00, 0 0 10px #FFBF00 !important; /* Neon ORANGE box shadow */
+}
+
+/* Neon border for 50-74% */
+.neon-border-50-74 {
+	border: 2px solid #FFF01F; /*Neon YELLOW border color */
+	box-shadow: 0 0 10px #FFF01F, 0 0 10px #FFF01F, 0 0 10px #FFF01F !important; /* Neon amber box shadow */
+}
+
+/* Neon border for 75-100% */
+.neon-border-75-100 {
+	border: 2px solid #39FF14; /* Neon GREEN border color */
+	box-shadow: 0 0 10px #39FF14, 0 0 10px #39FF14, 0 0 10px #39FF14 !important; /* Neon red box shadow */
+}
+
+/*-------------------------------------Documents-------------------------------------------------------/
+
+/* Neon border for 0-24% */
+.neon-border2-0-24 {
+	border: 2px solid transparent !important; /* Neon red border color */
+	box-shadow: 0 0 10px #FF3131, 0 0 10px #FF3131, 0 0 10px #FF3131 !important; /* Neon RED box shadow */
+}
+
+/* Neon border for 25-49% */
+.neon-border2-25-49 {
+	border: 2px solid #00FF00 !important; /* Neon green border color */
+	box-shadow: 0 0 10px #FFBF00, 0 0 10px #FFBF00, 0 0 10px #FFBF00 !important;/* Neon amber box shadow */
+}
+
+/* Neon border for 50-74% */
+.neon-border2-50-74 {
+	border: 2px solid #0000FF; /* Neon blue border color */
+	box-shadow: 0 0 10px #FFBF00, 0 0 10px #FFBF00, 0 0 10px #FFBF00 !important;/* Neon amber box shadow */
+}
+
+/* Neon border for 75-100% */
+.neon-border2-75-100 {
+	border: 2px solid #FF00FF; /* Neon red border color */
+	box-shadow: 0 0 10px #FF00FF, 0 0 10px #FF00FF, 0 0 10px #FF00FF !important; /* Neon red box shadow */
+}
+
+/*-------------------------------------Career Path-------------------------------------------------------/
+/* Neon border for 0-24% */
+.neon-border3-0-24 {
+	border: 2px solid transparent !important; /* Neon red border color */
+	box-shadow: 0 0 10px #FF0000, 0 0 10px #FF0000, 0 0 10px #FF0000 !important; /* Neon red box shadow */
+}
+
+/* Neon border for 25-49% */
+.neon-border3-25-49 {
+	border: 2px solid #00FF00 !important; /* Neon green border color */
+	box-shadow: 0 0 10px #FFBF00, 0 0 10px #FFBF00, 0 0 10px #FFBF00 !important; /* Neon amber box shadow */
+}
+
+/* Neon border for 50-74% */
+.neon-border3-50-74 {
+	border: 2px solid #0000FF; /* Neon blue border color */
+	box-shadow: 0 0 10px #FFBF00, 0 0 10px #FFBF00, 0 0 10px #FFBF00 !important; /* Neon amber box shadow */
+}
+
+/* Neon border for 75-100% */
+.neon-border3-75-100 {
+	border: 2px solid #FF00FF; /* Neon red border color */
+	box-shadow: 0 0 10px #FF00FF, 0 0 10px #FF00FF, 0 0 10px #FF00FF !important; /* Neon red box shadow */
+}
+
+/* Custom neon border class */
+/*.neon-border {
+	border: 2px solid transparent !important;
+	box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00 !important;*/ /* Neon green box shadow */
+	/*position: relative !important;
+	transition: color 0.3s, border-color 0.3s, box-shadow 0.3s !important;*/ /* Add box-shadow transition */
+/*}*/
+
+/*	.neon-border::before,
+	.neon-border::after {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 0;
+		transition: width 0.3s ease, height 0.3s ease;
+		border: 3px solid transparent;
+	}
+
+	.neon-border::before {
+		top: 0;
+		left: 0;
+		border-left-width: 0;
+		border-top-width: 0;
+	}
+
+	.neon-border::after {
+		bottom: 0;
+		right: 0;
+		border-right-width: 0;
+		border-bottom-width: 0;
+	}*/
+
+/*--------------------------------------------------------------
   # Main
   --------------------------------------------------------------*/
-  #main {
+#main {
 	margin-top: 60px;
 	padding: 20px 30px;
 	transition: all 0.3s;
-  }
+}
   @media (max-width: 1199px) {
 	#main {
 	  padding: 20px;

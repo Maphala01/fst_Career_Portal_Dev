@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/_LoginLayoutPage.cshtml";
+    Layout = "~/Views/Shared/_LoginLayoutPage.cshtml";
 }
 
 @using (Html.BeginForm())
@@ -20,7 +20,7 @@
                     <div class="main">
                         <div class="form-left-to-w3l">
                             @*<input type="text" name="username" placeholder="Username" required="">*@
-                            @Html.TextBoxFor(e => e.Username, new { @class = "form-control", placeholder = "Username/Email Address *", name = "username" })
+                            @Html.TextBoxFor(e => e.Username, new { @class = "form-control", placeholder = "Username *", name = "username" })
                             @if (TempData["LoginUsernameError"] != null)
                             {
                                 <script>
@@ -68,23 +68,27 @@
 
                     </div>
 
+                    <!--<div class="btnn">
+                    <button type="submit" name="button" value="Login">Sign In</button>-->
+                    @*<button id="cust_button" type="button" onclick="location.href='../Register/Index'">Sign Up</button>*@
+
+                    <!--<button name="button" value="Register" type="submit" onclick="location.href='@Url.Action("Index", "Register")'">Sign Up</button>-->
+                    @*onclick="location.href='<%: Url.Action("Action", "Controller") %>'"*@
+                    <!--</div>-->
                     <div class="btnn">
-                        <button type="submit" name="button" value="Login">Sign In</button>
-                        @*<button id="cust_button" type="button" onclick="location.href='../Register/Index'">Sign Up</button>*@
+                        <button type="submit" name="button" value="Login" style="background-color: #00008B; color: white; ">Sign In</button>
 
-                        <button name="button" value="Register" type="submit" onclick="location.href='@Url.Action("Index", "Register")'">Sign Up</button>
-
-                        @*onclick="location.href='<%: Url.Action("Action", "Controller") %>'"*@
+                        <button name="button" value="Register" type="submit" style="background-color: #00008B; color: white; " onclick="location.href='@Url.Action("Index", "Register")'">Sign Up</button>
                     </div>
                 </form>
                 <div class="banner-agileits-btm">
                     <div class="w3layouts_more-buttn">
-                        <h3>Don’t have an account..? <a href="#small-dialog1 " class="play-icon popup-with-zoom-anim" onclick="location.href='../Learner/ForgotPassword'">Reset Password</a></h3>
+                        <h3 class="forgotPass">Did you forget your password..? <a href="#small-dialog1 " class="play-icon popup-with-zoom-anim" onclick="location.href='@Url.Action("Index", "ForgotPassword")'">Reset Password</a></h3>
                     </div>
                 </div>
             </div>
             <div class="art-left-w3ls">
-                <img src="~/Assets/images/right1.jpg" />
+                <img src="~/Content/images/fasset_logo_1-removebg-preview (1).png" />
             </div>
         </div>
     </div>
@@ -92,57 +96,57 @@
         <p>&copy;2022 FASSET Career Portal. All Rights Reserved | Design by <a href="http:fasset.org.za" target="_blank">FASSET</a></p>
     </div>
     @*if (TempData["LoginSuccessful"] != null)
-    {
-        <script>
-        $(document).ready(function () {
-            toastr.success('@TempData["Login successful"]');
-        });
-        </script>
-    }
-    if (TempData["ErrorMessage"] != null)
-    {
-        <script>
-        $(document).ready(function () {
-            toastr.error('@TempData["ErrorMessage"]');
-        });
-        </script>*@
-    }
-    <!--js working-->
-    @*<script src="~/Assets/js/jquery-2.2.3.min.js"></script>*@
-    <!--//js working-->
-    @*<script>
-            var password = document.getElementById("password")
-                , confirm_password = document.getElementById("confirm_password");
-
-            function validatePassword() {
-                if (password.value != confirm_password.value) {
-                    confirm_password.setCustomValidity("Passwords Don't Match");
-                } else {
-                    confirm_password.setCustomValidity('');
-                }
-            }
-
-            password.onchange = validatePassword;
-            confirm_password.onkeyup = validatePassword;
-        </script>*@
-    <!--//scripts-->
-    @*<script src="~/Assets/js/jquery.magnific-popup.js"></script>*@
-    <!-- //pop-up-box -->
-    <script>
-        $(document).ready(function () {
-            $('.popup-with-zoom-anim').magnificPopup({
-                type: 'inline',
-                fixedContentPos: false,
-                fixedBgPos: true,
-                overflowY: 'auto',
-                closeBtnInside: true,
-                preloader: false,
-                midClick: true,
-                removalDelay: 300,
-                mainClass: 'my-mfp-zoom-in'
+        {
+            <script>
+            $(document).ready(function () {
+                toastr.success('@TempData["Login successful"]');
             });
-
-        });
-    </script>
+            </script>
+        }
+        if (TempData["ErrorMessage"] != null)
+        {
+            <script>
+            $(document).ready(function () {
+                toastr.error('@TempData["ErrorMessage"]');
+            });
+            </script>*@
 }
+<!--js working-->
+@*<script src="~/Assets/js/jquery-2.2.3.min.js"></script>*@
+<!--//js working-->
+@*<script>
+        var password = document.getElementById("password")
+            , confirm_password = document.getElementById("confirm_password");
+
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>*@
+<!--//scripts-->
+@*<script src="~/Assets/js/jquery.magnific-popup.js"></script>*@
+<!-- //pop-up-box -->
+<script>
+    $(document).ready(function () {
+        $('.popup-with-zoom-anim').magnificPopup({
+            type: 'inline',
+            fixedContentPos: false,
+            fixedBgPos: true,
+            overflowY: 'auto',
+            closeBtnInside: true,
+            preloader: false,
+            midClick: true,
+            removalDelay: 300,
+            mainClass: 'my-mfp-zoom-in'
+        });
+
+    });
+</script>
+
 <!-- //pop-up-box -->

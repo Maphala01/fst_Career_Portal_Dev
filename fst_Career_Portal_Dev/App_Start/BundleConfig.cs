@@ -23,8 +23,15 @@ namespace fst_Career_Portal_Dev
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/css/bootstrap.css",  
+                      "~/Content/css/popuo.css",
+                      "~/Content/css/bootstrap.min.css",
+                      "~/Content/css/style.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/js").Include(
+                "~/Script/jquery-2.2.3.min.js",
+                "~/Script/jquery.magnific-popup.js",
+                "~/Script/bootstrap.min.js"));
         }
     }
 }

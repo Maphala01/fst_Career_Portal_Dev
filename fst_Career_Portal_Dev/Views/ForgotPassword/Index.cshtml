@@ -1,0 +1,85 @@
+﻿@model fst_Career_Portal_Dev.Models.ForgotPasswordMdl
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/ForgotPass_LayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h1 class="header-w3ls">
+        FASSET CAREER PORTAL<span class="trademark_1" style=" vertical-align: super;">&#174;</span>
+    </h1>
+    <div class="art-bothside">
+        <div class="mid-cls">
+            <div class="art-right-w3ls">
+                <h1 class="header-w3ls">PASSWORD RESET</h1>
+                <p>Facilitating the achievement of world-class finance and accounting services skills. </p>
+                <form action="@Url.Action("Index", "ForgotPassword")" method="post">
+                    <div class="main">
+                        <div class="form-left-to-w3l">
+                            @*<input type="text" name="username" placeholder="Username" required="">*@
+                            @Html.TextBoxFor(e => e.username, new { @class = "form-control", placeholder = "Username *", name = "username" })
+
+                        </div>
+                        <div class="form-left-to-w3l">
+                            @*<input type="text" name="username" placeholder="Username" required="">*@
+                            @Html.TextBoxFor(e => e.emailaddress, new { @class = "form-control", placeholder = "Email Address *", name = "emailaddress" })
+
+                        </div>
+                        <div class="main">
+                            <div class="form-left-to-w3l">
+                                @*<input type="password" name="password" placeholder="Password" id="password" required="">*@
+                                @Html.PasswordFor(e => e.NewPasswordChange, new { @class = "form-control custom-placeholder", placeholder = "Password *" })
+
+                            </div>
+                        </div>
+                        <div class="main">
+                            <div class="form-left-to-w3l">
+                                @*<input type="password" name="password" placeholder="Password" id="password" required="">*@
+                                @Html.PasswordFor(e => e.NewConfirmPasswordChange, new { @class = "form-control custom-placeholder", placeholder = " Confirm Password  *" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btnn">
+                        <button type="submit" name="ForgotPasswrd" value="ForgotPass" style="background-color: #00008B; color: white; ">Reset</button>
+
+                        @*<button id="cust_button" type="button" onclick="location.href='../Register/Index'">Sign Up</button>*@
+
+                        <button name="button" value="Register" type="submit" onclick="location.href='@Url.Action("Index", "Register")'" style="background-color: #00008B; color: white; ">Sign Up</button>
+
+                        @*<button name="button" value="Login" type="submit" onclick="location.href='@Url.Action("Index", "Login")'">Back</button>*@
+
+                        <button type="button" id="GoingBack" value="Login" onclick="window.location.href='@Url.Action("Index", "Login")'" style="background-color: #00008B; color: white; ">Sign In</button>
+
+                    </div>
+                </form>               
+            </div>
+            <div class="art-left-w3ls">
+                <img src="~/Assets/images/fasset_logo_1-removebg-preview (1).png" />
+            </div>
+        </div>
+    </div>
+    <div class="copy">
+        <p>&copy;2022 FASSET Career Portal. All Rights Reserved | Design by <a href="http:fasset.org.za" target="_blank">FASSET</a></p>
+    </div>
+<script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+        });
+</script>
+}

@@ -10,7 +10,7 @@ namespace fst_Career_Portal_Dev.Models
         public string UserName { get; set; }
         public string Fullname { get; set; }
         public string School { get; set; }
-        public int Grade { get; set; }
+        public string Grade { get; set; }
         public string Province { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
@@ -58,5 +58,11 @@ namespace fst_Career_Portal_Dev.Models
         public int OpportunitytId { get; set; }
         public string OpportunityDescription { get; set; }
         public string OpportunityStatus { get; set; }
+        public List<UserProfileMdl> OpportunitiesList { get; set; }
+        public List<UserProfileMdl> RecentInterestList { get; set; }
+        public string InterestID { get; set; }
+        public string NewPasswordChange { get; set; }
+        public string NewCurrentPasswordChange { get; set; }
+        public string NewConfirmPasswordChange { get; set; }
     }
 }

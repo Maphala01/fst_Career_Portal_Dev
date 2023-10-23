@@ -82,9 +82,11 @@ namespace fst_Career_Portal_Dev.Models
         [Display(Name = "National ID")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "National ID required")]
         public string NationalID { get; set; }
-        [Display(Name = "National ID")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "National ID required")]
+
         public string Gender { get; set; }
+        public string SelectedGender { get; set; }
+
+        public string SelectedGrade { get; set; }
 
     }
 }

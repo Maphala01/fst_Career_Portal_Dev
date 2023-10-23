@@ -148,19 +148,20 @@
 </header>
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
-        <li class="nav-item"> <a class="nav-link collapsed" href="index.html"> <i class="bi bi-grid"></i> <span>Dashboard | Learner</span> </a></li>
+        <li class="nav-item"> <a class="nav-link collapsed" href="@Url.Action("Index", "Dashboard")"> <i class="bi bi-grid"></i> <span>Dashboard | Learner</span> </a></li>
 
         <li class="nav-item">
             <!-- <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="users-profile.html"> <i class="bi bi-person"></i> <span>Profile</span> </a> -->
-            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="users-profile.html"> <i class="bi bi-person"></i><span>Learner</span><i class="bi bi-chevron-down ms-auto"></i> </a>
-            <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                @*<li> <a href="@Url.Action("Index", "Profile")"><span>My Profile</span> </a></li>*@
-                <li> <a href="user-profile.html"><span>My Profile</span> </a></li>
-                <li> <a href="learner_my_documents.html"><span>My Documents</span> </a></li>
-                <li> <a href="learner_my_rinterest.html"><span>My Interests</span> </a></li>
-            </ul>
-        </li>
-        <li class="nav-item"> <a class="nav-link collapsed" href="#"> <i class="bi bi-card-list"></i> <span>Learner Opportunities</span> </a></li>
+            <!--<a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="users-profile.html"> <i class="bi bi-person"></i><span>Learner</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">-->
+            @*<li> <a href="@Url.Action("Index", "Profile")"><span>My Profile</span> </a></li>*@
+            <!--<li> <a href="user-profile.html"><span>My Profile</span> </a></li>
+            <li> <a href="learner_my_documents.html"><span>My Documents</span> </a></li>
+            <li> <a href="learner_my_rinterest.html"><span>My Interests</span> </a></li>
+        </ul>-->
+        <li class="nav-item"> <a class="nav-link collapsed" href="@Url.Action("Index", "Profile")"> <i class="bi bi-person"></i> <span>Learner Profile</span> </a></li>
+        
+        <li class="nav-item"> <a class="nav-link collapsed" href="@Url.Action("Index", "LearnerOpportunity")"> <i class="bi bi-card-list"></i> <span>Learner Opportunities</span> </a></li>
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-bar-chart"></i><span>Portal Documents</span><i class="bi bi-chevron-down ms-auto"></i> </a>
             <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -203,9 +204,9 @@
                         <ul class="nav nav-tabs nav-tabs-bordered">
                             <li class="nav-item"> <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button></li>
                             <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button></li>
-                            <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button></li>
                             <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-add-documents">Documents</button></li>
                             <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-interests">Interest</button></li>
+                            <li class="nav-item"> <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button></li>
 
                         </ul>
                         <div class="tab-content pt-2">
@@ -418,18 +419,22 @@
                             </div>
 
                             <div class="tab-pane fade pt-3" id="profile-change-password">
-                                <form>
+                                <form action="@Url.Action("ChangePassword", "Profile")" method="post" enctype="multipart/form-data">
+                                    @*method="post" action="@Url.Action("DeleteDocument", "Profile"*@
                                     <div class="row mb-3">
                                         <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
-                                        <div class="col-md-8 col-lg-9"> <input name="password" type="password" class="form-control" id="currentPassword"></div>
+                                        @*<div class="col-md-8 col-lg-9"> <input name="password" type="password" class="form-control" id="currentPassword"></div>*@
+                                        @Html.TextBoxFor(e => e.NewCurrentPasswordChange, new { @class = "form-control" })
                                     </div>
                                     <div class="row mb-3">
                                         <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
-                                        <div class="col-md-8 col-lg-9"> <input name="newpassword" type="password" class="form-control" id="newPassword"></div>
+                                        @*<div class="col-md-8 col-lg-9"> <input name="newpassword" type="password" class="form-control" id="newPassword"></div>*@
+                                        @Html.TextBoxFor(e => e.NewPasswordChange, new { @class = "form-control", name = "NewPasswordChange" })
                                     </div>
                                     <div class="row mb-3">
                                         <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
-                                        <div class="col-md-8 col-lg-9"> <input name="renewpassword" type="password" class="form-control" id="renewPassword"></div>
+                                        @*<div class="col-md-8 col-lg-9"> <input name="renewpassword" type="password" class="form-control" id="renewPassword"></div>*@
+                                        @Html.TextBoxFor(e => e.NewConfirmPasswordChange, new { @class = "form-control" })
                                     </div>
                                     <div class="text-center"> <button type="submit" class="btn btn-primary" value="changePassword" name="submitButton">Change Password</button></div>
                                 </form>
@@ -481,8 +486,25 @@
                                                 <ul>
                                                     @foreach (var document in Model.UserDocuments)
                                                     {
-                                                        @*<li><span>FILE TYPE:</span>@document.FileType</li>*@
-                                                        <li><b>@document.FileTypeName</b><span>  : </span>@document.FileName</li>
+                                                        <form method="post" action="@Url.Action("DeleteDocument", "Profile")">
+                                                            @Html.Hidden("documentId", document.DocumentId)
+                                                        <li>
+                                                            @*<span style="font-weight:100">FILE NAME:@document.DocumentId</span>
+                                                                 @{
+                                                                     string fileName = document.FileName.Length > 30 ? document.FileName.Substring(0, 30) + "..." : document.FileName;
+                                                                 }
+                                                                 @fileName
+                                                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>*@
+                                                            <div style="display: flex; align-items: center;">
+                                                                <span style="font-weight: 100">FILE NAME:</span>
+                                                                @{
+                                                                    string fileName = document.FileName.Length > 30 ? document.FileName.Substring(0, 30) + "..." : document.FileName;
+                                                                }
+                                                                @fileName
+                                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                            </div>
+                                                        </li>
+                                                        </form>
                                                     }
                                                 </ul>
                                             }
@@ -499,53 +521,104 @@
                                 <div class="row mb-3">
                                     <div class="row">
                                         <div class="card-body">
-                                            @*<form method="post" action="@Url.Action("SaveSelectedOpportunities", "YourControllerName")">*@
 
-                                                <table class="table table-borderless datatable">
+                                            @*start copying from here*@
+                                            <!--<form method="post" action="@Url.Action("SaveSelectedOpportunities", "YourControllerName")">
+
+        <table class="table table-borderless datatable">
+            <thead>
+                <tr>
+                    <th class="no-sort">#</th>-->
+                                            @*<th scope="col">Posted</th>*@
+                                            @*<th scope="col">Province</th>*@
+                                            <!--<th scope="col">Description</th>-->
+                                            @*<th scope="col">Type</th>*@
+                                            <!--<th scope="col">Status</th>
+
+        </tr>
+    </thead>
+    <tbody>
+       @** @foreach (var Opportunities in Model.Opportunities)
+        {
+            <tr>
+                <td><input type="checkbox" name="selectedOpportunities"></td>-->
+                                            @*<th scope="row"><a href="#">@Opportunities.PostedDate.ToString("yyyy-MM-dd")</a></th>*@
+                                            @*<td>@Opportunities.Province</td>*@
+                                            <!--<td><a href="#" class="text-primary">@*@@Opportunities.Description</a></td>-->
+                                            @*<td>@Opportunities.Type</td>*@
+                                            <!--<td>
+                                          @*  @if (Opportunities.Status == "Open")
+                                            {
+                                                <span class="badge bg-success">@Opportunities.Status</span>
+                                            }
+                                            else if (Opportunities.Status == "Closed")
+                                            {
+                                                <span class="badge bg-danger">@Opportunities.Status</span>
+                                            }
+                                            else if (Opportunities.Status == "Closing Soon")
+                                            {
+                                                <span class="badge bg-warning">@Opportunities.Status</span>
+                                            }
+                                        </td>-->
+                                        @*<td>
+        <a href="@Url.Action("OpportunityModal", "YourControllerName", new { id = @Opportunities.Id })" class="btn btn-link" data-toggle="modal" data-target="#modalOpportunity_@Opportunities.Id" data-description="@Opportunities.Description">View</a>
+    </td>*@
+
+                                    <!--</tr>
+                                }
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn btn-primary">Submit Interests</button>
+                    </form>-->
+                                            @*start copying from here*@
+                                            <div class="col-12">                                              
+                                                <h5 class="card-title"> Interests Applied</h5>
+                                                <table class="table table-borderless">
                                                     <thead>
                                                         <tr>
-                                                            <th class="no-sort">#</th>
-                                                            @*<th scope="col">Posted</th>*@
-                                                            @*<th scope="col">Province</th>*@
+                                                            <th scope="col">#</th>
                                                             <th scope="col">Description</th>
-                                                            @*<th scope="col">Type</th>*@
-                                                            <th scope="col">Status</th>
-
+                                                            <th scope="col">Applied Date</th>
+                                                            @*<th scope="col">Status</th>
+                                                            <th scope="col">Type</th>*@
+                                                            <th scope="col">Actions</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach (var Opportunities in Model.Opportunities)
-                                                        {
-                                                            <tr>
-                                                                <td><input type="checkbox" name="selectedOpportunities"></td>
+                                                        @{
 
-                                                                @*<th scope="row"><a href="#">@Opportunities.PostedDate.ToString("yyyy-MM-dd")</a></th>*@
-                                                                @*<td>@Opportunities.Province</td>*@
-                                                                <td><a href="#" class="text-primary">@Opportunities.Description</a></td>
-                                                                @*<td>@Opportunities.Type</td>*@
+                                                            int counter = 1;
+                                                            for (int i = 0; i < Model.RecentInterestList.Count; i++)
+                                                            {
+                                                                var application = Model.RecentInterestList[i];
+                                                                <tr>
+                                                                    <th>@counter</th>
+                                                                    <td>@application.ApplicationDesc</td>
+                                                                    <td>@application.ApplicationAppliedDate.ToString("yyyy-MM-dd")</td>
+                                                                    @*<td>@application.ApplicationStatus</td>
+                                                                    <td>@application.ApplicationType</td>*@
                                                                 <td>
-                                                                    @if (Opportunities.Status == "Open")
+                                                                    <form method="post" action="@Url.Action("DeleteItem", "Profile")">
+                                                                        @Html.Hidden("OpportunityId", application.OpportunityId)
+                                                                        <button type="submit" class="btn btn-danger" value=i>Delete</button>
+                                                                    </form>
+                                                                    @if (TempData["InterestDeletionError"] != null)
                                                                     {
-                                                                        <span class="badge bg-success">@Opportunities.Status</span>
-                                                                    }
-                                                                    else if (Opportunities.Status == "Closed")
-                                                                    {
-                                                                        <span class="badge bg-danger">@Opportunities.Status</span>
-                                                                    }
-                                                                    else if (Opportunities.Status == "Closing Soon")
-                                                                    {
-                                                                        <span class="badge bg-warning">@Opportunities.Status</span>
+                                                                        <script>
+                                                                            $(document).ready(function () {
+                                                                                toastr.error('@TempData["InterestDeletionError"]');
+                                                                            });
+                                                                        </script>
                                                                     }
                                                                 </td>
-                                                                @*<td>
-                                <a href="@Url.Action("OpportunityModal", "YourControllerName", new { id = @Opportunities.Id })" class="btn btn-link" data-toggle="modal" data-target="#modalOpportunity_@Opportunities.Id" data-description="@Opportunities.Description">View</a>
-                            </td>*@
-
-                                                            </tr>
+                                                                @*<td>Debug: @application.OpportunityId</td>*@
+                                                                </tr>
+                                                                counter++;
+                                                            }
                                                         }
-                                                    </tbody>                                                   
-                                                </table>
-                                                    
+                                                    </tbody>
+                                                </table>                                            
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

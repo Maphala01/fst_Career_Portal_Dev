@@ -24,7 +24,15 @@
 
     <!-- Add Toastr JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+    
+    @if (TempData["ToastMessageSuccess"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.success('@TempData["ToastMessageSuccess"]');
+        });
+        </script>
+    }
     @if (TempData["RegisterUsernameError"] != null)
     {
         <script>
@@ -105,6 +113,14 @@
         });
         </script>
     }
-  
+    @if (TempData["ToastMessage"] != null)
+    {
+        <script>
+        $(document).ready(function () {
+            toastr.error('@TempData["ToastMessage"]');
+        });
+        </script>
+    }
+
 </body>
 </html>
