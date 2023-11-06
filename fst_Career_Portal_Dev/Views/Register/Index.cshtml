@@ -80,27 +80,27 @@
 
                             </div>
 
-                            <div class="form-right-w3ls">
-                                @*@Html.DropDownListFor(model => model.register_roleList, new SelectList(Model.register_roleList, "Register_RoleID", "Register_RoleName"),"Select Role", new { @class = "form-control", @name = "RoleList" })
-                                    @Html.DropDownListFor(model => model.register_roleList, new SelectList(Model.register_roleList, "Register_RoleID", "Register_RoleName"), "Select Role", new { @class = "form-control", @name = "RoleList" })*@
-                                @Html.DropDownListFor(model => model.SelectedGender, new List<SelectListItem> {
-                                      new SelectListItem { Text = "Male", Value = "Male" },
-                 new SelectListItem { Text = "Female", Value = "Female" },
-                 new SelectListItem { Text = "Other", Value = "Other" }
-                                 }, "Select Gender *", new { @class = "form-control custom-select-placeholder", @id = "roleDropdown" })
+                            <!-------GENDER OBJECT TAKE TO PROFILE-->
+                            <!--<div class="form-right-w3ls">-->
+                            @*@Html.DropDownListFor(model => model.register_roleList, new SelectList(Model.register_roleList, "Register_RoleID", "Register_RoleName"),"Select Role", new { @class = "form-control", @name = "RoleList" })
+                                @Html.DropDownListFor(model => model.register_roleList, new SelectList(Model.register_roleList, "Register_RoleID", "Register_RoleName"), "Select Role", new { @class = "form-control", @name = "RoleList" })*@
+                            <!--@Html.DropDownListFor(model => model.SelectedGender, new List<SelectListItem> {
+                                                 new SelectListItem { Text = "Male", Value = "Male" },
+                            new SelectListItem { Text = "Female", Value = "Female" },
+                            new SelectListItem { Text = "Other", Value = "Other" }
+                                            }, "Select Gender *", new { @class = "form-control custom-select-placeholder", @id = "roleDropdown" })
 
-                            </div>
-
+                                       </div>-->
+                            <!-------GENDER OBJECT TAKE TO PROFILE-->
                         </div>
 
 
-                        <div class="btnn">
-                            @*<button type="submit" onclick="location.href='../Dashboard'">Back</button>*@
-                            @*<button name="button" value="Register" type="submit" onclick="location.href='@Url.Action("Index", "Register")'">Sign Up</button>
-                                @*<button type="submit" name="button" value="Register" style="background-color: #00008B; color: white; ">Sign Up</button>*@
-                            @*<button type="submit" onclick="location.href='../Register/Login'">Sign Up</button>*@
-                        </div>
-
+                        <!--<div class="btnn">-->
+                        @*<button type="submit" onclick="location.href='../Dashboard'">Back</button>*@
+                        @*<button name="button" value="Register" type="submit" onclick="location.href='@Url.Action("Index", "Register")'">Sign Up</button>
+                            @*<button type="submit" name="button" value="Register" style="background-color: #00008B; color: white; ">Sign Up</button>*@
+                        @*<button type="submit" onclick="location.href='../Register/Login'">Sign Up</button>*@
+                        <!--</div>-->
                         @*<div class="banner-agileits-btm">
                                 <div class="w3layouts_more-buttn">
                                     <h3>Don’t have an account..? <a href="#small-dialog1 " class="play-icon popup-with-zoom-anim">Reset Password</a></h3>
@@ -108,8 +108,8 @@
                             </div>*@
                     </div>
                     <div class="art-left-w3ls">
-                        <div >
-                            <img class="image-reg" src="~/Content/images/fasset_logo_1-removebg-preview (1).png"/>
+                        <div>
+                            <img class="image-reg" src="~/Content/images/fasset_logo_1-removebg-preview (1).png" />
                         </div>
                         <div class="main" id="column2">
                             <div class="form-left-to-w3l">
@@ -155,78 +155,108 @@
 
                             </div>
                             @*<div class="main">
-                                    <div class="form-left-to-w3l">
-                                        @Html.TextBoxFor(e => e.Grade, new { @class = "form-control custom-placeholder", placeholder = "Current Grade *" })
-                                        @if (TempData["RegisterGradeError"] != null)
-                                        {
-                                            <script>
-                                                $(document).ready(function () {
-                                                    toastr.error('@TempData["RegisterGradeError"]');
-                                                });
-                                            </script>
-                                        }
+            <div class="form-left-to-w3l">
+                @Html.TextBoxFor(e => e.Grade, new { @class = "form-control custom-placeholder", placeholder = "Current Grade *" })
+                @if (TempData["RegisterGradeError"] != null)
+                {
+                    <script>
+                        $(document).ready(function () {
+                            toastr.error('@TempData["RegisterGradeError"]');
+                        });
+                    </script>
+                }
 
-                                        <div class="clear"></div>
-                                    </div>
-                                </div>*@
-                            <div class="form-right-w3ls">
-                                @*@Html.DropDownListFor(model => model.register_roleList, new SelectList(Model.register_roleList, "Register_RoleID", "Register_RoleName"),"Select Role", new { @class = "form-control", @name = "RoleList" })
-                                    @Html.DropDownListFor(model => model.register_roleList, new SelectList(Model.register_roleList, "Register_RoleID", "Register_RoleName"), "Select Role", new { @class = "form-control", @name = "RoleList" })*@
-                                @Html.DropDownListFor(model => model.SelectedGrade, new List<SelectListItem> {
-                                      new SelectListItem { Text = "Grade 5", Value = "Grade 5" },
-                                      new SelectListItem { Text = "Grade 6", Value = "Grade 6" },
-                                      new SelectListItem { Text = "Grade 7", Value = "Grade 7" },
-                                      new SelectListItem { Text = "Grade 8", Value = "Grade 8" },
-                                      new SelectListItem { Text = "Grade 9", Value = "Grade 9" },
-                                      new SelectListItem { Text = "Grade 10", Value = "Grade 10" },
-                                      new SelectListItem { Text = "Grade 11", Value = "Grade 11" },
-                                      new SelectListItem { Text = "Grade 12", Value = "Grade 12" },
-                                      new SelectListItem { Text = "Other", Value = "Other" }
-                                }, "Select Grade *", new { @class = "form-control custom-select-placeholder", @id = "roleDropdown" })
-                                @if (TempData["RegisterGradeError"] != null)
-                                {
-                                    <script>
-                                            $(document).ready(function () {
-                                                toastr.error('@TempData["RegisterGradeError"]');
-                                            });
-                                    </script>
-                                }
+                <div class="clear"></div>
+            </div>
+        </div>*@
+                            <!--<div class="form-right-w3ls">-->
+                            @*@Html.DropDownListFor(model => model.register_roleList, new SelectList(Model.register_roleList, "Register_RoleID", "Register_RoleName"),"Select Role", new { @class = "form-control", @name = "RoleList" })
+        @Html.DropDownListFor(model => model.register_roleList, new SelectList(Model.register_roleList, "Register_RoleID", "Register_RoleName"), "Select Role", new { @class = "form-control", @name = "RoleList" })*@
+                            <!--@Html.DropDownListFor(model => model.SelectedGrade, new List<SelectListItem> {
+           //new SelectListItem { Text = "Grade 10", Value = "Grade 10" },
+           //new SelectListItem { Text = "Grade 11", Value = "Grade 11" },
+           //new SelectListItem { Text = "Grade 12", Value = "Grade 12" },
+           //new SelectListItem { Text = "University(1st yr)", Value = "University(1st yr)" },
+           //new SelectListItem { Text = "University(2st yr)", Value = "University(2st yr)" },
+           //new SelectListItem { Text = "University(3st yr)", Value = "University(3st yr)" },
+           //new SelectListItem { Text = "TVET(1st yr)", Value = "TVET(1st yr)" },
+           //new SelectListItem { Text = "TVET(2st yr)", Value = "TVET(2st yr)" },
+           //new SelectListItem { Text = "TVET(3st yr)", Value = "TVET(3st yr)" },
+           //new SelectListItem { Text = "Other", Value = "Other" }
+       }, "Current Education Level *", new { @class = "form-control custom-select-placeholder", @id = "roleDropdown" })
+        @if (TempData["RegisterGradeError"] != null)
+        {
+            <script>
+                    $(document).ready(function () {
+                        toastr.error('@TempData["RegisterGradeError"]');
+                    });
+            </script>
+        }
 
-                                <div class="clear"></div>
+        <div class="clear"></div>
+    </div>-->
+                            <!--Current School-->
+                            <!--<div class="form-left-to-w3l">-->
+                            @*<input type="text" name="userEmail" placeholder="Email Address" required="">*@
+                            <!--@Html.TextBoxFor(e => e.School, new { @class = "form-control custom-placeholder", placeholder = "Current School *" })
+        @if (TempData["RegisterSchoolError"] != null)
+        {
+            <script>
+                    $(document).ready(function () {
+                        toastr.error('@TempData["RegisterSchoolError"]');
+                    });
+            </script>
+        }
+    </div>-->
+                            <!--Current School-->
+                            <!--<div class="form-left-to-w3l">-->
+                            @*<input type="text" name="userEmail" placeholder="Email Address" required="">*@
+                            @*@Html.TextBoxFor(e => e.Gender, new { @class = "form-control custom-placeholder", placeholder = "Gender *" })*@
+
+                            @*@Html.DropDownListFor(e => e.SelectedGender, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Male", Value = "Male" },
+            new SelectListItem { Text = "Female", Value = "Female" },
+            new SelectListItem { Text = "Other", Value = "Other" }
+            // Add more options as needed
+        }, "Select Gender", new { @class = "form-control custom-placeholder", @id = "roleDropdown" })
+
+        @if (TempData["RegisterGenderError"] != null)
+        {
+            <script>
+                    $(document).ready(function () {
+                        toastr.error('@TempData["RegisterGenderError"]');
+                    });
+            </script>
+        }*@
+                            <!--</div>-->
+                            <p>
+                                Please read and accept the
+                                <a href="#" id="termsLink">terms and conditions</a>
+                                and
+                                <a href="#" id="popiaLink">POPIA policy</a>.
+                            </p>
+                            <label for="termsCheckbox">
+                                @Html.CheckBoxFor(m => m.AcceptTerms)
+                                <span>I agree to the terms and conditions</span>
+                            </label>
+
+                            <!-- Your modal containers -->
+                            <div id="termsModal" style="display: none;">
+                                <!-- Content for terms modal -->
                             </div>
-                            <div class="form-left-to-w3l">
-                                @*<input type="text" name="userEmail" placeholder="Email Address" required="">*@
-                                @Html.TextBoxFor(e => e.School, new { @class = "form-control custom-placeholder", placeholder = "Current School *" })
-                                @if (TempData["RegisterSchoolError"] != null)
-                                {
-                                    <script>
-                                            $(document).ready(function () {
-                                                toastr.error('@TempData["RegisterSchoolError"]');
-                                            });
-                                    </script>
-                                }
-                            </div>
-                            <div class="form-left-to-w3l">
-                                @*<input type="text" name="userEmail" placeholder="Email Address" required="">*@
-                                @*@Html.TextBoxFor(e => e.Gender, new { @class = "form-control custom-placeholder", placeholder = "Gender *" })*@
 
-                                @*@Html.DropDownListFor(e => e.SelectedGender, new List<SelectListItem>
-                                    {
-                                        new SelectListItem { Text = "Male", Value = "Male" },
-                                        new SelectListItem { Text = "Female", Value = "Female" },
-                                        new SelectListItem { Text = "Other", Value = "Other" }
-                                        // Add more options as needed
-                                    }, "Select Gender", new { @class = "form-control custom-placeholder", @id = "roleDropdown" })
-
-                                    @if (TempData["RegisterGenderError"] != null)
-                                    {
-                                        <script>
-                                                $(document).ready(function () {
-                                                    toastr.error('@TempData["RegisterGenderError"]');
-                                                });
-                                        </script>
-                                    }*@
+                            <div id="popiaModal" style="display: none;">
+                                <!-- Content for POPIA modal -->
                             </div>
+                        </div>
+                        <!-- Your modal containers -->
+                        <div id="termsModal" style="display: none;">
+                            <!-- Content for terms modal -->
+                        </div>
+
+                        <div id="popiaModal" style="display: none;">
+                            <!-- Content for POPIA modal -->
                         </div>
                         @*<img src="~/Assets/images/right1.jpg" />*@
                         <button type="submit" name="button" value="Register" style="background-color: #00008B; color: white; ">Sign Up</button>
@@ -238,6 +268,17 @@
             <p>&copy;2022 FASSET Career Portal. All Rights Reserved | Design by <a href="http:fasset.org.za" target="_blank">FASSET</a></p>
         </div>
     </div>
+    <script>
+        document.getElementById('termsLink').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('termsModal').style.display = 'block';
+        });
+
+        document.getElementById('popiaLink').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('popiaModal').style.display = 'block';
+        });
+    </script>
 }
 }
 

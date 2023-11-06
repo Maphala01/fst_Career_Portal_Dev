@@ -279,19 +279,19 @@ h1.header-w3ls {
 }
 
 
-.art-right-w3ls h2 {
+/*.art-right-w3ls h2 {
     font-size: 33px;
     font-weight: 600;
     margin-bottom: 12px;
-    color: #000;
+    color: #000;*/
 }
 
-.art-right-w3ls p {
+/*.art-right-w3ls p {
     font-size: 14px;
     text-align: center;
     color: #000;
     line-height: 27px;
-}
+}*/
 
 .art-bothside {
     width: 70%;
@@ -302,7 +302,7 @@ h1.header-w3ls {
     background: #fff;
 }
 
-.mid-cls {
+/*.mid-cls {
     display: -webkit-flex;
     display: -webkit-box;
     display: -moz-flex;
@@ -311,9 +311,9 @@ h1.header-w3ls {
     display: flex;
     -webkit-justify-content: space-between;
     justify-content: space-between;
-}
+}*/
 
-.art-left-w3ls, .art-right-w3ls {
+/*.art-left-w3ls, .art-right-w3ls {
     padding: 3em 2em 3em;
 }
 
@@ -323,11 +323,11 @@ h1.header-w3ls {
 }
 
 .art-left-w3ls {
-    text-align: center;
+    text-align: center;*/
     /*background: #ffffff;*/
-}
+/*}*/
 
-.form-left-to-w3l input[type="text"], .form-left-to-w3l input[type="password"], .form-right-w3ls input[type="password"], .form-right-w3ls input[type="email"], .form-right-w3ls select {
+/*.form-left-to-w3l input[type="text"], .form-left-to-w3l input[type="password"], .form-right-w3ls input[type="password"], .form-right-w3ls input[type="email"], .form-right-w3ls select {
     
     width: 100%;
     color: #000;
@@ -344,7 +344,7 @@ h1.header-w3ls {
     -o-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
     box-sizing: border-box;
-}
+}*/
 
 ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
@@ -543,9 +543,9 @@ button:hover {
 }
 
 @media(max-width:1366px) {
-    .art-left-w3ls, .art-right-w3ls {
+   /* .art-left-w3ls, .art-right-w3ls {
         padding: 2em 2em 2em;
-    }
+    }*/
 
     .art-bothside {
         width: 73%;
@@ -605,9 +605,9 @@ button:hover {
         width: 84%;
     }
 
-    .art-left-w3ls, .art-right-w3ls {
+/*    .art-left-w3ls, .art-right-w3ls {
         padding: 1.7em 1.5em 1.8em;
-    }
+    }*/
 
     .w3layouts_more-buttn h3 {
         font-size: 16px;
@@ -764,9 +764,9 @@ button:hover {
 }
 
 @media(max-width:440px) {
-    .art-left-w3ls, .art-right-w3ls {
+   /* .art-left-w3ls, .art-right-w3ls {
         padding: 1.7em 1.5em 1em;
-    }
+    }*/
 }
 
 @media(max-width:414px) {
@@ -792,9 +792,9 @@ button:hover {
 }
 
 @media(max-width:375px) {
-    .art-left-w3ls, .art-right-w3ls {
+   /* .art-left-w3ls, .art-right-w3ls {
         padding: 1.5em 1.5em 1em;
-    }
+    }*/
 }
 
 @media(max-width:320px) {

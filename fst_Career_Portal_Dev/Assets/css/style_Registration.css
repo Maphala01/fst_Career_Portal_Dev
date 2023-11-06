@@ -358,7 +358,7 @@ h1.header-w3ls {
 .art-left-w3ls {
     text-align: center;
     /*background: #ffffff;*/
-    margin-top:-88px;
+    margin-top:-90px;
 }
 
 .form-left-to-w3l input[type="text"], .form-left-to-w3l input[type="password"], .form-right-w3ls input[type="password"], .form-right-w3ls input[type="email"], .form-right-w3ls select {
@@ -517,6 +517,10 @@ button:hover {
     .art-right-w3ls h2 {
         font-size: 37px;
     }
+
+    /*.art-left-w3ls {
+        margin-top: -108px;
+    }*/
 }
 
 @media(max-width:1600px) {

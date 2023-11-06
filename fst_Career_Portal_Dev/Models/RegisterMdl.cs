@@ -88,5 +88,7 @@ namespace fst_Career_Portal_Dev.Models
 
         public string SelectedGrade { get; set; }
 
+        public bool AcceptTerms { get; set; }
+
     }
 }
